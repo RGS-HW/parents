@@ -19,7 +19,8 @@
 
 // Do the timer
 var played = 0;
-setInterval(function () {
+
+function timer() {
     var d = new Date();
     var date = "";
     date += (d.getHours() > 12 ? d.getHours() - 12 : d.getHours());
@@ -33,15 +34,7 @@ setInterval(function () {
     if (time == 0 && d.getSeconds() <= 3) {
         if (played <= 1) {
             played += 1;
-            var audio = document.createElement('audio');
-            audio.style.display = "none";
-            audio.src = 'ding.mp3';
-            audio.volume = 1;
-            audio.autoplay = true;
-            audio.onended = function () {
-                audio.remove()
-            };
-            document.body.appendChild(audio);
+            document.getElementById("ding").play();
         }
         document.body.className = "change";
         document.getElementById("timeTill").innerHTML = "Change!";
@@ -53,4 +46,26 @@ setInterval(function () {
         var timeTill = (4 - time) + ":" + secondsTill;
         document.getElementById("timeTill").innerHTML = timeTill + " remaining";
     }
-}, 100); //0.1s
+    setTimeout(timer, 100); //0.1s
+}
+
+
+// Start the timer (user interact for audio)
+var a = document.createElement("a");
+a.onclick = function () {
+    a.parentElement.removeChild(a);
+    timer();
+};
+a.style.zIndex = "10000";
+a.style.position = "absolute";
+a.style.width = "100%";
+a.style.height = "100%";
+a.style.top = "0px";
+a.style.left = "0px";
+a.style.display = "flex";
+a.style.alignItems = "center";
+a.style.justifyContent = "center";
+var span = document.createElement("span");
+span.innerText = "Please click on the page to start the Parents' Evening Timer.";
+a.appendChild(span);
+document.body.insertBefore(a, document.body.firstChild);
