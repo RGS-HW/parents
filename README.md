@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/rgshw/parents/master/rgshw.png" alt="RGSHW Icon" align="right" width="150"/>
+<img src="https://raw.githubusercontent.com/rgshw/rgshw.github.io/master/rgshw-square.png" alt="RGSHW Icon" align="right" width="150"/>
 
 # parents
 

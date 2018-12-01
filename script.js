@@ -17,12 +17,6 @@
  **/
 /* https://jscompress.com/ */
 
-// Check Chrome
-var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-if (!isChrome) {
-    alert('Please be aware this site only officially supports Chrome on Desktop.\nFor best performance and reliability please use this site via Chrome.');
-}
-
 // Do the timer
 var played = 0;
 setInterval(function () {
