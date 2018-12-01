@@ -69,8 +69,8 @@ html, body {
 #cont {
     position: absolute;
     top: 25%;
-    left: 50%;
-    transform: translate(-50%, -25%);
+    transform: translateY(-25%);
+    width: 100%;
 }
 
 h1, h2 {
