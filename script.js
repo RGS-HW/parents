@@ -55,10 +55,10 @@ function timer() {
             played += 1;
             if (!noAudio) document.getElementById("ding").play();
         }
-        document.body.className = "change";
+        document.documentElement.className = "change";
         document.getElementById("timeTill").innerHTML = "Change!";
     } else {
-        document.body.className = "";
+        document.documentElement.className = "";
         played = 0;
         var secondsTill = (60 - d.getSeconds());
         secondsTill = (secondsTill.toString().length == 1 ? "0" + secondsTill : secondsTill);

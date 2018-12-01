@@ -28,13 +28,18 @@ html, body {
     background: #fff;
 }
 
-.change {
+html.change,
+html.change body {
     animation: bgFlash 0.5s linear infinite alternate;
 }
 
-.change h2 {
+html.change h1,
+html.change h2 {
     animation: colorFlash 0.5s linear infinite alternate;
-    font-weight: bold;
+}
+
+html.change #logo {
+    animation: logoFlash 0.5s linear infinite alternate;
 }
 
 @keyframes bgFlash {
@@ -45,25 +50,40 @@ html, body {
         background: #fff;
     }
     50.5% {
-        background: #252D63;
+        background: #4165B3;
     }
     100% {
-        background: #252D63;
+        background: #4165B3;
     }
 }
 
 @keyframes colorFlash {
     0% {
-        color: #252D63;
+        color: #4165B3;
     }
     50% {
-        color: #252D63;
+        color: #4165B3;
     }
     50.5% {
         color: #fff;
     }
     100% {
         color: #fff;
+    }
+}
+
+@keyframes logoFlash {
+    0% {
+        filter: none;
+    }
+    50% {
+        filter: none;
+    }
+    50.5% {
+        filter: grayscale(1) brightness(3);
+    }
+    100% {
+        filter: grayscale(1) brightness(3);
     }
 }
 
@@ -75,6 +95,7 @@ html, body {
 }
 
 h1, h2 {
+    color: #4165B3;
     margin-top: 0.6em !important;
 }
 
