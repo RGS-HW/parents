@@ -25,6 +25,7 @@ html, body {
     text-align: center;
     font-family: 'Overpass Mono', monospace;
     font-size: 42px;
+    background: #fff;
 }
 
 .change {
@@ -38,10 +39,10 @@ html, body {
 
 @keyframes bgFlash {
     0% {
-        background: rgba(255, 255, 255, 1);
+        background: #fff;
     }
     50% {
-        background: rgba(255, 255, 255, 1);
+        background: #fff;
     }
     50.5% {
         background: #252D63;
