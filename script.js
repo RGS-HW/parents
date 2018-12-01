@@ -17,6 +17,25 @@
  **/
 /* https://jscompress.com/ */
 
+// Handle no audio request
+function getParams(lowercase) {
+    var params = {};
+    if (location.search) {
+        var parts = location.search.substring(1).split('&');
+
+        for (var i = 0; i < parts.length; i++) {
+            var nv = parts[i].split('=');
+            if (!nv[0]) continue;
+            if (lowercase) nv[0] = String(nv[0]).toLowerCase();
+            params[nv[0]] = nv[1] || true;
+        }
+    }
+    return params;
+}
+
+var urlParams = getParams(true);
+var noAudio = (urlParams && urlParams.hasOwnProperty('noaudio'));
+
 // Do the timer
 var played = 0;
 
@@ -34,7 +53,7 @@ function timer() {
     if (time == 0 && d.getSeconds() <= 3) {
         if (played <= 1) {
             played += 1;
-            document.getElementById("ding").play();
+            if (!noAudio) document.getElementById("ding").play();
         }
         document.body.className = "change";
         document.getElementById("timeTill").innerHTML = "Change!";
@@ -51,22 +70,26 @@ function timer() {
 
 
 // Start the timer (user interact for audio)
-var a = document.createElement("a");
-a.onclick = function () {
-    a.parentElement.removeChild(a);
+if (noAudio) {
     timer();
-};
-a.style.zIndex = "10000";
-a.style.position = "absolute";
-a.style.width = "100%";
-a.style.height = "100%";
-a.style.top = "0px";
-a.style.left = "0px";
-a.style.display = "flex";
-a.style.alignItems = "center";
-a.style.justifyContent = "center";
-a.style.background = "rgba(255, 255, 255, 0.5)";
-var span = document.createElement("span");
-span.innerText = "Please click on the page to start the Parents' Evening Timer.";
-a.appendChild(span);
-document.body.insertBefore(a, document.body.firstChild);
+} else {
+    var a = document.createElement("a");
+    a.onclick = function () {
+        a.parentElement.removeChild(a);
+        timer();
+    };
+    a.style.zIndex = "10000";
+    a.style.position = "absolute";
+    a.style.width = "100%";
+    a.style.height = "100%";
+    a.style.top = "0px";
+    a.style.left = "0px";
+    a.style.display = "flex";
+    a.style.alignItems = "center";
+    a.style.justifyContent = "center";
+    a.style.background = "rgba(255, 255, 255, 0.5)";
+    var span = document.createElement("span");
+    span.innerText = "Please click on the page to start the Parents' Evening Timer.";
+    a.appendChild(span);
+    document.body.insertBefore(a, document.body.firstChild);
+}
