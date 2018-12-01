@@ -65,6 +65,7 @@ a.style.left = "0px";
 a.style.display = "flex";
 a.style.alignItems = "center";
 a.style.justifyContent = "center";
+a.style.background = "rgba(255, 255, 255, 0.5)";
 var span = document.createElement("span");
 span.innerText = "Please click on the page to start the Parents' Evening Timer.";
 a.appendChild(span);
